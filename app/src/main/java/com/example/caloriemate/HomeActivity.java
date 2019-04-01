@@ -13,7 +13,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Button food_button;
     private Button drink_button;
-
+    int calorieNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,15 @@ public class HomeActivity extends AppCompatActivity {
                 opendrink();
             }
         });
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            String value = extras.getString("key");
+        }
+
     }
+
+
 
     public void openfood(){
         Intent intent = new Intent(this, Food.class);

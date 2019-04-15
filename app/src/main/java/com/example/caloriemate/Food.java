@@ -22,6 +22,11 @@ public class Food extends AppCompatActivity {
     ListView foodlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            int calorieCount = extras.getInt("key");
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
 
@@ -30,12 +35,12 @@ public class Food extends AppCompatActivity {
         ListView foodList = (ListView) findViewById(R.id.food_list);
 
         HashMap<String, String> nameFood = new HashMap<>();
-        nameFood.put("Burger", "354");
-        nameFood.put("Fries", "365");
-        nameFood.put("Hotdog", "151");
-        nameFood.put("Banana", "105");
-        nameFood.put("Orange", "45");
-        nameFood.put("Steak", "679");
+        nameFood.put("Burger", "\n\n354");
+        nameFood.put("Fries", "\n\n365");
+        nameFood.put("Hotdog", "\n\n151");
+        nameFood.put("Banana", "\n\n105");
+        nameFood.put("Orange", "\n\n45");
+        nameFood.put("Steak", "\n\n679");
 
         List<HashMap<String, String>> listItems = new ArrayList<>();
         SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
@@ -55,7 +60,7 @@ public class Food extends AppCompatActivity {
         foodList.setAdapter(adapter);
 
         Intent i = new Intent(Food.this, HomeActivity.class);
-        i.putExtra("key", count);
+
     }
 }
 

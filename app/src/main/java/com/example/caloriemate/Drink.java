@@ -22,6 +22,11 @@ public class Drink extends AppCompatActivity {
     ListView drinklist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            int calorieCount = extras.getInt("key");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink);
 
@@ -31,12 +36,12 @@ public class Drink extends AppCompatActivity {
         ListView drinkList = (ListView) findViewById(R.id.drink_list);
 
         HashMap<String, String> nameDrink = new HashMap<>();
-        nameDrink.put("Coke", "150");
-        nameDrink.put("Mountain Dew", "170");
-        nameDrink.put("Unsweetened Tea", "2");
-        nameDrink.put("Sweetened Tea", "77");
-        nameDrink.put("Milk 2%", "103");
-        nameDrink.put("Coffee", "1");
+        nameDrink.put("Coke", "\n\n150");
+        nameDrink.put("Mountain Dew", "\n\n170");
+        nameDrink.put("Unsweetened Tea", "\n\n2");
+        nameDrink.put("Sweetened Tea", "\n\n77");
+        nameDrink.put("Milk 2%", "\n\n103");
+        nameDrink.put("Coffee", "\n\n1");
 
         List<HashMap<String, String>> listItems = new ArrayList<>();
         SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item,

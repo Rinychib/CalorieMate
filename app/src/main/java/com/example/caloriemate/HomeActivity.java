@@ -19,6 +19,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Intent foodPass = new Intent(HomeActivity.this, Food.class);
+        Intent drinkPass = new Intent(HomeActivity.this, Drink.class);
+        foodPass.putExtra("key", calorieNumber);
+
 
         food_button = (Button) findViewById(R.id.food_button);
         food_button.setOnClickListener(new View.OnClickListener() {
@@ -35,11 +39,6 @@ public class HomeActivity extends AppCompatActivity {
                 opendrink();
             }
         });
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null){
-            String value = extras.getString("key");
-        }
 
     }
 

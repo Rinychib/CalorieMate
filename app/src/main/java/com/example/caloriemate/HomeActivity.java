@@ -11,6 +11,7 @@ import org.w3c.dom.Text;
 
 public class HomeActivity extends AppCompatActivity {
 
+    public static String EXTRA_NUMBER = "0";
     private Button food_button;
     private Button drink_button;
     int calorieNumber = 0;
@@ -32,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+
         drink_button = (Button) findViewById(R.id.drink_button);
         drink_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void openfood(){
         Intent intent = new Intent(this, Food.class);
+        intent.putExtra(EXTRA_NUMBER, calorieNumber);
         startActivity(intent);
     }
 

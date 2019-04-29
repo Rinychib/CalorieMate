@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Food extends AppCompatActivity {
-
+    HashMap<String, String> nameFood = new HashMap<>();
 
     ListView foodlist;
     @Override
@@ -32,9 +32,9 @@ public class Food extends AppCompatActivity {
 
         int count = 0;
 
-        ListView foodList = (ListView) findViewById(R.id.food_list);
+        final ListView foodList = (ListView) findViewById(R.id.food_list);
 
-        HashMap<String, String> nameFood = new HashMap<>();
+
         nameFood.put("Burger", "\n\n354");
         nameFood.put("Fries", "\n\n365");
         nameFood.put("Hotdog", "\n\n151");
@@ -42,7 +42,7 @@ public class Food extends AppCompatActivity {
         nameFood.put("Orange", "\n\n45");
         nameFood.put("Steak", "\n\n679");
 
-        List<HashMap<String, String>> listItems = new ArrayList<>();
+        final List<HashMap<String, String>> listItems = new ArrayList<>();
         SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
             new String[]{"First Line", "Second Line"},
                 new int[]{R.id.text1, R.id.text2});
@@ -59,8 +59,13 @@ public class Food extends AppCompatActivity {
             }
         foodList.setAdapter(adapter);
 
-        Intent i = new Intent(Food.this, HomeActivity.class);
+    foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Toast.makeText(Food.this, nameFood.get(position),Toast.LENGTH_SHORT).show();
 
+        }
+    });
     }
 }
 

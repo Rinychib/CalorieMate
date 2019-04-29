@@ -16,8 +16,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Drink extends AppCompatActivity {
 
+
+public class Drink extends AppCompatActivity {
+    HashMap<String, String> nameDrink = new HashMap<>();
 
     ListView drinklist;
     @Override
@@ -35,7 +37,7 @@ public class Drink extends AppCompatActivity {
 
         ListView drinkList = (ListView) findViewById(R.id.drink_list);
 
-        HashMap<String, String> nameDrink = new HashMap<>();
+
         nameDrink.put("Coke", "\n\n150");
         nameDrink.put("Mountain Dew", "\n\n170");
         nameDrink.put("Unsweetened Tea", "\n\n2");
@@ -60,9 +62,13 @@ public class Drink extends AppCompatActivity {
         }
         drinkList.setAdapter(adapter);
 
-        Intent i = new Intent(Drink.this, HomeActivity.class);
-        i.putExtra("key", count);
-    }
+        drinkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(Drink.this, nameDrink.get(position),Toast.LENGTH_SHORT).show();
+
+            }
+    });}
 }
 
         //drinklist = (ListView)findViewById(R.id.drink_list); Not used anymore

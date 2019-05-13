@@ -62,7 +62,9 @@ public class Food extends AppCompatActivity {
     foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(Food.this, nameFood.get(position),Toast.LENGTH_SHORT).show();
+            Intent foodIntent = new Intent(getBaseContext(), Food.class);
+            foodIntent.putExtra("FOOD_CHOICE", position);
+
 
         }
     });

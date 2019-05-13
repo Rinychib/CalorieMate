@@ -44,7 +44,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-
+    String calorieget = getIntent().getStringExtra("FOOD_CHOICE");
+    int result = Integer.parseInt(calorieget);
+    int calorieNumber = calorieNumber + result;
 
     public void openfood(){
         Intent intent = new Intent(this, Food.class);

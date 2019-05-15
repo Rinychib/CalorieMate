@@ -48,6 +48,10 @@ public class HomeActivity extends AppCompatActivity {
     int result = Integer.parseInt(calorieget);
     int calorieNumber = calorieNumber + result;
 
+    String calorieget = getIntent().getStringExtra("DRINK_CHOICE");
+    int result = Integer.parseInt(calorieget);
+    int calorieNumber = calorieNumber + result;
+
     public void openfood(){
         Intent intent = new Intent(this, Food.class);
         intent.putExtra(EXTRA_NUMBER, calorieNumber);
